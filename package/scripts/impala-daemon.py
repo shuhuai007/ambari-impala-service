@@ -19,7 +19,7 @@ class ImpalaDaemon(Script):
         Execute(cmd)
 
 
-        cmd = 'yum install  impala-server impala-catalog impala-state-store impala-shell'
+        cmd = 'yum -y install  impala-server impala-catalog impala-state-store impala-shell'
         Execute('echo "Running ' + cmd + '"')
         Execute(cmd)
 

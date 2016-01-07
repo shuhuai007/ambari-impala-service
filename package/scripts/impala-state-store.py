@@ -18,7 +18,7 @@ class StateStore(Script):
         Execute('echo "Running ' + cmd + '"')
         Execute(cmd)
 
-        cmd = 'yum install  impala-server impala-catalog impala-state-store impala-shell'
+        cmd = 'yum -y install  impala-server impala-catalog impala-state-store impala-shell'
         Execute('echo "Running ' + cmd + '"')
         Execute(cmd)
 
@@ -33,7 +33,6 @@ class StateStore(Script):
     #Call start.sh to start the service
     def start(self, env):
         import params
-        self.set_conf_bin(env)
         self.configure(env)
 
         self.create_hdfs_user(params.flink_user)
