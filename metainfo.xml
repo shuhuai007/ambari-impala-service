@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<metainfo>
+    <schemaVersion>2.0</schemaVersion>
+    <services>
+        <service>
+            <name>IMPALA</name>
+            <displayName>Impala</displayName>
+            <comment>impala config</comment>
+            <version>0.10.0</version>
+            <components>
+                <component>
+                  <name>IMPALA_STATE_STORE</name>
+                  <displayName>Impala_State_Store</displayName>
+                  <category>MASTER</category>
+                  <cardinality>1</cardinality>
+                  <commandScript>
+                    <script>scripts/impala-state-store.py</script>
+                    <scriptType>PYTHON</scriptType>
+                    <timeout>10000</timeout>
+                  </commandScript>
+                </component>
+
+                <component>
+                  <name>IMPALA_CATALOG_SERVICE</name>
+                  <displayName>Impala_Catalog_Service</displayName>
+                  <category>MASTER</category>
+                  <cardinality>1</cardinality>
+                  <commandScript>
+                    <script>scripts/impala-catalog-service.py</script>
+                    <scriptType>PYTHON</scriptType>
+                    <timeout>10000</timeout>
+                  </commandScript>
+                </component>
+
+                <component>
+                  <name>IMPALA_DAEMON</name>
+                  <displayName>Impala_Daemon</displayName>
+                  <category>SLAVE</category>
+                  <cardinality>1</cardinality>
+                  <commandScript>
+                    <script>scripts/impala-daemon.py</script>
+                    <scriptType>PYTHON</scriptType>
+                    <timeout>10000</timeout>
+                  </commandScript>
+                </component>
+            </components>
+
+
+            <osSpecifics>
+              <osSpecific>
+                <osFamily>redhat6</osFamily>
+                <packages>
+                   <package><name>git</name></package>    
+                   <package><name>apache-maven-3.2*</name></package>                                           
+                </packages>
+              </osSpecific>
+              
+            </osSpecifics>
+      	    <configuration-dependencies>
+	      <config-type>impala-ambari-config</config-type>      	   
+      	    </configuration-dependencies>
+        </service>
+    </services>
+</metainfo>
